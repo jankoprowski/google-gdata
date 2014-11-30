@@ -116,6 +116,8 @@ class HttpRequest(object):
       size: int Required if the data is a file like object. If the data is a
             string, the size is calculated so this parameter is ignored.
     """
+    if isinstance(data, bytes):
+      data = data.decode('utf-8')
     if isinstance(data, str):
       size = len(data)
     if size is None:
